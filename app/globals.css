@@ -47,8 +47,11 @@ body {
 .book { width: 100%; }
 @media (max-width: 767px) {
   html, body { overflow-x: clip; }
-  .book { width: 191vw; flex: none; margin-left: calc(-51vw - 16px); height: 84dvh !important; }
-  .book-loading { height: 84dvh !important; }
+  .book { width: 191vw; flex: none; margin-left: calc(-51vw - 16px); height: calc(100dvh - 150px) !important; }
+  .book-loading { height: calc(100dvh - 150px) !important; }
+  .table { padding-top: 12px; padding-bottom: 12px; justify-content: flex-start; }
+  .table .stage { height: calc(100dvh - 24px); align-items: flex-start; }
+  .stage .reader { gap: 16px; }
 }
 
 .stage {
