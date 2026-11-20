@@ -804,7 +804,7 @@ export default function Book({ pieces, data, startSlug, preview = false }: {
         </nav>
       </header>
 
-      <div className="book-wrap" onDoubleClick={() => visible && setPanel("zoom")}>
+      <div className="book-wrap">
         {visible ? (
           <LeafThrough ref={book} key={single ? "single" : "spread"} pages={visible} startPage={startPage} onPageChange={onPageChange}
             interaction={{ keyboard: "global" }}
