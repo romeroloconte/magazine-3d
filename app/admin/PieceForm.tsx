@@ -87,6 +87,11 @@ export function PieceForm({ piece, book, index, nextPosition = 0 }: {
         <nav><Link href="/admin" className="admin-button"><Icon name="back" />Back</Link></nav>
       </header>
       <form action={action} className="form" onChange={() => { dirty.current = true; }} onSubmit={() => { saving.current = true; }}>
+        <section className="preview-block">
+          <h2><Icon name="eye" />Preview</h2>
+          <p className="hint">This is how the spread looks in the magazine. It updates as you type; nothing is saved until you press Save.</p>
+          <Preview piece={preview} book={book} index={index} onFit={setFit} />
+        </section>
         <fieldset>
           <legend>Spread</legend>
           <input type="hidden" name="layout" value={draft.layout} />
@@ -197,11 +202,6 @@ export function PieceForm({ piece, book, index, nextPosition = 0 }: {
           )}
         </fieldset>
 
-        <section className="preview-block">
-          <h2><Icon name="eye" />Preview</h2>
-          <p className="hint">This is how the spread looks in the magazine. It updates as you type; nothing is saved until you press Save.</p>
-          <Preview piece={preview} book={book} index={index} onFit={setFit} />
-        </section>
         <label>
           Link
           <input type="text" name="slug" defaultValue={piece?.slug} placeholder="generated from the title" />
