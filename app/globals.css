@@ -46,20 +46,23 @@ body {
    leafthrough reserves for the page turn falls off-screen and the page fills almost the full width. */
 .book { width: 100%; }
 @media (max-width: 767px) {
-  /* Phone: top bar, book, counter and share all fit in one screen, no scroll.
-     The 3D view leaves empty space above and below the page; negative margins trim it. */
+  /* Phone: everything fits in one screen with no scroll and one even rhythm:
+     32px at the top and bottom edges; the space left over is shared equally between top bar, page, counter and share.
+     The 3D view leaves ~20.5% of its box empty above and below the page; the negative
+     margins trim exactly that, so the visible page is what gets spaced. */
   html, body { overflow: hidden; }
-  .table { height: 100dvh; min-height: 0; padding-top: 12px; padding-bottom: 12px; gap: 16px; }
-  .table .stage { height: auto; flex: none; align-items: flex-start; margin-top: auto; }
-  .stage .reader { gap: 12px; }
+  .table { height: 100dvh; min-height: 0; padding-top: 32px; padding-bottom: 32px; gap: 0; justify-content: space-between; align-items: stretch; }
+  .table .stage, .stage .reader { display: contents; }
+  .table .topbar, .table .book-wrap { margin-left: 16px; margin-right: 16px; }
   .book {
+    /* same magazine size as before; only the spacing around it changed */
     --h: min(calc(100dvh - 90px), 188vw);
     width: 191vw; flex: none; margin-left: calc(-51vw - 16px);
-    height: var(--h) !important; margin-top: calc(var(--h) * -0.15); margin-bottom: calc(var(--h) * -0.12);
+    height: var(--h) !important; margin-top: calc(var(--h) * -0.205); margin-bottom: calc(var(--h) * -0.205);
   }
-  .book-loading { height: calc(100dvh - 200px) !important; }
+  .book-loading { height: calc((100dvh - 90px) * 0.59) !important; }
   .topbar, .page-counter, .table .share { position: relative; z-index: 2; }
-  .table .share { top: auto; right: auto; margin-top: auto; }
+  .table .share { top: auto; right: auto; margin-top: 0; }
 }
 
 .stage {
