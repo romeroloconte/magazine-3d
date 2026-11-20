@@ -787,8 +787,6 @@ export default function Book({ pieces, data, startSlug, preview = false }: {
   const piece = current >= 0 ? pieces[current] : null;
   const total = visible?.length ?? 0;
   const counter = shown.length > 1 ? `${shown[0] + 1}–${shown[shown.length - 1] + 1}` : `${(shown[0] ?? 0) + 1}`;
-  const atStart = (shown[0] ?? 0) <= 0;
-  const atEnd = (shown[shown.length - 1] ?? 0) >= total - 1;
 
   return (
     <div className="reader">
@@ -816,12 +814,6 @@ export default function Book({ pieces, data, startSlug, preview = false }: {
             </div>
             <p>Loading issue {data.issue}…</p>
           </div>
-        )}
-        {visible && (
-          <>
-            <button className="page-arrow prev" onClick={() => book.current?.prev()} disabled={atStart} aria-label="Previous page"><ChevronLeft size={26} strokeWidth={1.8} aria-hidden="true" /></button>
-            <button className="page-arrow next" onClick={() => book.current?.next()} disabled={atEnd} aria-label="Next page"><ChevronRight size={26} strokeWidth={1.8} aria-hidden="true" /></button>
-          </>
         )}
       </div>
 
