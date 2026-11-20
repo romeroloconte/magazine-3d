@@ -46,12 +46,20 @@ body {
    leafthrough reserves for the page turn falls off-screen and the page fills almost the full width. */
 .book { width: 100%; }
 @media (max-width: 767px) {
-  html, body { overflow-x: clip; }
-  .book { width: 191vw; flex: none; margin-left: calc(-51vw - 16px); height: calc(100dvh - 150px) !important; }
-  .book-loading { height: calc(100dvh - 150px) !important; }
-  .table { padding-top: 12px; padding-bottom: 12px; justify-content: flex-start; }
-  .table .stage { height: calc(100dvh - 24px); align-items: flex-start; }
-  .stage .reader { gap: 16px; }
+  /* Phone: top bar, book, counter and share all fit in one screen, no scroll.
+     The 3D view leaves empty space above and below the page; negative margins trim it. */
+  html, body { overflow: hidden; }
+  .table { height: 100dvh; min-height: 0; padding-top: 12px; padding-bottom: 12px; gap: 16px; }
+  .table .stage { height: auto; flex: none; align-items: flex-start; margin-top: auto; }
+  .stage .reader { gap: 12px; }
+  .book {
+    --h: min(calc(100dvh - 90px), 188vw);
+    width: 191vw; flex: none; margin-left: calc(-51vw - 16px);
+    height: var(--h) !important; margin-top: calc(var(--h) * -0.15); margin-bottom: calc(var(--h) * -0.12);
+  }
+  .book-loading { height: calc(100dvh - 200px) !important; }
+  .topbar, .page-counter, .table .share { position: relative; z-index: 2; }
+  .table .share { top: auto; right: auto; margin-top: auto; }
 }
 
 .stage {
