@@ -47,7 +47,8 @@ body {
 .book { width: 100%; }
 @media (max-width: 767px) {
   html, body { overflow-x: clip; }
-  .book { width: 159vw; flex: none; margin-left: calc(-35vw - 16px); }
+  .book { width: 191vw; flex: none; margin-left: calc(-51vw - 16px); height: 84dvh !important; }
+  .book-loading { height: 84dvh !important; }
 }
 
 .stage {
